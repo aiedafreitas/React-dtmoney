@@ -21,6 +21,15 @@ header {
     justify-content: space-between;
 }
 
+title {
+    margin-bottom:-20px;
+}
+
+img {
+    margin-left: 15rem;
+    margin-top:-5rem;
+}
+
 strong {
     display:block;
     margin-top:2rem;

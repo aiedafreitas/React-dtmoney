@@ -12,7 +12,7 @@ return (
     <div>
     <header>
         <p>Entradas</p>
-        <img src={incomeImg} alt="Entradas" />
+        <img className="img" src={incomeImg} alt="Entradas" />
         <strong>R$ 1.000,00</strong>
     </header>        
     </div>
@@ -20,8 +20,8 @@ return (
     
     <div >
     <header>
-        <p>Saídas</p>
-        <img src={outcomeImg} alt="Saída" />
+        <p className="title">Saídas</p>
+        <img className="img" src={outcomeImg} alt="Saída" />
         <strong>- R$ 500,00</strong>
     </header>        
     </div>
@@ -29,7 +29,7 @@ return (
     <div className="highlight-background">
     <header>
         <p>Total</p>
-        <img src={totalImg} alt="Total" />
+        <img className="img" src={totalImg} alt="Total" />
         <strong>R$ 500,00</strong>
     </header>        
     </div>
