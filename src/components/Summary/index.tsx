@@ -14,8 +14,33 @@ export function Summary () {
 
 const {transactions} = useContext(TransactionsContext);
 
-console.log(transactions);
+// const totalDeposits = transactions.reduce((acc, transaction) => {
 
+//     if (transaction.type === 'deposit'){
+//         return acc + transaction.amount;
+//     }
+
+//     return acc;
+// },0
+// )
+
+const summary = transactions.reduce ((acc, transaction) => {
+if (transaction.type === 'deposit') {
+acc.deposits += transaction.amount;
+acc.total += transaction.amount;
+
+} else {
+    acc.withdraws += transaction.amount;
+    acc.total -= transaction.amount;
+}
+return acc;
+
+},
+{
+    deposits:0,
+    withdraws:0,
+    total:0,
+})
 
 return (
     <Container>
@@ -23,7 +48,12 @@ return (
     <header>
         <p>Entradas</p>
         <img className="img" src={incomeImg} alt="Entradas" />
-        <strong>R$ 1.000,00</strong>
+        <strong>
+        {new Intl.NumberFormat('pt-BR',{
+                    style: 'currency',
+                    currency:'BRL'
+                }).format(summary.deposits)}
+            </strong>
     </header>        
     </div>
     
@@ -32,7 +62,12 @@ return (
     <header>
         <p className="title">Saídas</p>
         <img className="img" src={outcomeImg} alt="Saída" />
-        <strong>- R$ 500,00</strong>
+        <strong>
+        {new Intl.NumberFormat('pt-BR',{
+                    style: 'currency',
+                    currency:'BRL'
+                }).format(summary.withdraws)}
+            </strong>
     </header>        
     </div>
 
@@ -40,7 +75,12 @@ return (
     <header>
         <p>Total</p>
         <img className="img" src={totalImg} alt="Total" />
-        <strong>R$ 500,00</strong>
+        <strong>
+        {new Intl.NumberFormat('pt-BR',{
+                    style: 'currency',
+                    currency:'BRL'
+                }).format(summary.total)}
+           </strong>
     </header>        
     </div>
 
